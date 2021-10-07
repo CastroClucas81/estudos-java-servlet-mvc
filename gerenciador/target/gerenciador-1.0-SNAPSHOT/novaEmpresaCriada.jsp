@@ -12,8 +12,6 @@
     //todo o cod jsp é executado no lado do servidor
     //String nomeEmpresa = (String) request.getAttribute("empresa");
 %>
-    <c:import url="logout-parcial.jsp" />
-
     <c:if test="${not empty empresa}">
         "nome da empresa: " ${empresa}
     </c:if>

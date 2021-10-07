@@ -8,7 +8,7 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 
 //CONTROLADOR
-@WebServlet(name = "entrada", value = "/entrada")
+//@WebServlet(name = "entrada", value = "/entrada")
 public class UnicaEntradaServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -18,17 +18,6 @@ public class UnicaEntradaServlet extends HttpServlet {
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String paramAcao = request.getParameter("acao");
-
-        HttpSession sessao = request.getSession();
-        boolean usuarioNaoEstaLogado = sessao.getAttribute("usuarioLogado") == null;
-        boolean AcaoProtegida = !(paramAcao.equals("Login") || paramAcao.equals("LoginForm"));
-
-        if (AcaoProtegida && usuarioNaoEstaLogado) {
-            response.sendRedirect("entrada?acao=LoginForm");
-            //para o método abruptamente
-            return;
-        }
-
 
         String nomeDaClasse = "br.com.alura.gerenciador.acao." + paramAcao;
 

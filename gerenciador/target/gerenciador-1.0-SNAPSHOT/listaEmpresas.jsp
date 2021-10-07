@@ -1,4 +1,4 @@
-<%@ page import="br.com.alura.gerenciador.modelo.Empresa" %>
+<%@ page import="br.com.alura.gerenciador.servlet.Empresa" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -12,10 +12,6 @@
 <body>
 
 <ul>
-    <h3>Usuário logado: ${usuarioLogado.login}</h3>
-
-    <c:import url="logout-parcial.jsp" />
-
     <c:if test="${not empty empresa}">
         "nome da empresa: " ${empresa}
     </c:if>
@@ -27,8 +23,8 @@
         <% //empresa.nome = empresa.getNome() %>
         <li>
                 ${empresa.nome} - <fmt:formatDate value="${empresa.dataAbertura}" pattern="dd/MM/yyyy" />
-                    <a href="/gerenciador_war_exploded/entrada?acao=MostraEmpresa&id=${empresa.id}">Editar</a>
-                    <a href="/gerenciador_war_exploded/entrada?acao=RemoveEmpresa&id=${empresa.id}">Remove</a>
+                    <a href="/gerenciador_war_exploded/mostraEmpresaServlet?id=${empresa.id}">Editar</a>
+                    <a href="/gerenciador_war_exploded/removeEmpresaServlet?id=${empresa.id}">Remove</a>
         </li>
     </c:forEach>
 </ul>
